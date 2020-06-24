@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.70.1/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.70.1/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+</head>
+<link rel="stylesheet" href="index.css">
+<body>
+  <div id="cesiumContainer" id="cesium-container"></div>
+  <script>
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5YzBhMWQyZS05ODE5LTQzNGYtODg3MS1kZGVmZTY0ZjM1ZmYiLCJpZCI6Mjk4MjIsInNjb3BlcyI6WyJhc2wiLCJhc3IiLCJhc3ciLCJnYyJdLCJpYXQiOjE1OTI3NzA3NTR9.WBQKPWFo_KCnnUSfEoOUTSx_tuFjBkeVDX8Mq_x262E';
+    var viewer = new Cesium.Viewer('cesiumContainer', {
+        terrainProvider:Cesium.createWorldTerrain()
+    });
+
+    var tileset = viewer.scene.primitives.add(
+      new Cesium.Cesium3DTileset({
+        url: Cesium.IonResource.fromAssetId(115523)
+      })
+    );
+
+    tileset.style = new Cesium.Cesium3DTileStyle({
+        color:'color("blue")',
+    });
+
+    viewer.zoomTo(tileset);
+
+    var scene = viewer.scene;
+
+    // var modelMatrix = Cesium.Transfoms.eastNorthUpFixedFrame(Cesium.Cartesian3.fromDegrees(-7.6523817, 33.6004666,15))
+    // var model = 
+
+    viewer.scene.primitives.add(Cesium.createOsmBuildings());
+  </script>
+</body>
+</html>
